@@ -1,0 +1,56 @@
+{
+    "defaultSeverity": "warning",
+    "extends": [
+      "tslint:recommended"
+    ],
+    "linterOptions": {
+      "exclude": [
+        "node_modules/**"
+      ]
+    },
+    "rules": {
+      "indent": [true, "spaces", 2],
+      "interface-name": false,
+      "no-consecutive-blank-lines": false,
+      "object-literal-sort-keys": false,
+      "ordered-imports": false,
+      "quotemark": [true, "single"],
+      "one-line": [false,"check-open-brace","check-catch","check-else","check-whitespace"],
+      "semicolon": [false, "always"],
+      "comment-format": [false, "check-space"],
+      "eofline": false,
+      "no-console": false,
+      // 设置成员对象的访问权限（public,private,protect)
+      //"member-access": false,
+      // 禁止自动检测末尾行必须使用逗号，always总是检测，never从不检测，ignore忽略检测
+      "trailing-comma": [
+        true,
+        {
+          "singleline": "never",
+          "multiline": {
+            "objects": "ignore",
+            "arrays": "ignore",
+            "functions": "ignore",
+            "typeLiterals": "ignore"
+          }
+        }
+      ],
+      // 禁止给类的构造函数的参数添加修饰符
+      "no-parameter-properties": false,
+      // 禁止使用 debugger
+      "no-debugger": false,
+      // 禁止行尾有空格
+      "no-trailing-whitespace": false,
+      // 禁止无用的表达式
+      "no-unused-expression": false,
+      // 变量必须先定义后使用
+      "no-use-before-declare": false,
+      // 禁止使用 var
+      "no-var-keyword": true,
+      // 必须使用 === 或 !==，禁止使用 == 或 !=，与 null 比较时除外
+      "triple-equals": true,
+      // 指定类成员的排序规则
+      "member-ordering": false
+    }
+  }
+  
