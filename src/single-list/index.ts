@@ -2,8 +2,12 @@
  * @Autor: maxuebin
  * @Date: 2021-03-17 07:31:46
  * @LastEditors: maxuebin
- * @LastEditTime: 2021-03-17 20:52:39
+ * @LastEditTime: 2021-03-18 08:31:46
  * @FilePath: \ts-demo\src\single-list\index.ts
+ */
+/**
+ * @description 单向链表，永远存在next属性指向下一个节点
+ * - 只能从头往后遍历节点
  */
 export interface NodeItem {
     next?: NodeItem;
@@ -67,6 +71,13 @@ export class SingleList {
         return false;
     }
 
+    /**
+     * @description 删除指定节点
+     * - 1. 通过一个临时变量来查找上一个节点，找出后指向删除节点的下一个节点
+     * - 2. 删除的节点与下一个节点数据进行交换（速度快，但是无法删除最后一个节点）
+     * @param {NodeItem} node 待删除的节点
+     * @returns {boolean}
+     */
     public removeNode(node?: NodeItem): boolean {
         if (!node || !node.next) {
             // 尾节点，不知道前面的节点是什么，无法删除
