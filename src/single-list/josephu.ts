@@ -3,15 +3,7 @@
  * josephu（约瑟夫）问题：编号为 1、2、3...n的n个人坐成一圈，从1开始报数，数到m的人出列，
  * 下一位又从1开始报数，数到m的那个人出列，一次类推，知道所有人出列
  */
-
-class Boy {
-    public no!: number;
-    public next!: Boy;
-
-    constructor(no: number) {
-        this.no = no;
-    }
-}
+import Boy from './boy';
 
 export default class Josephu {
     private first!: any;
