@@ -87,5 +87,47 @@ export default function expOperate(exp: string) {
  * @param {string} exp 算术表达式
  */
 export function trsExp(exp: string) {
-
+    const numStack: Stack = new Stack();
+    const opeStack: Stack = new Stack();
+    let str = exp;
+    let index = 0;
+    while (!!str) {
+        // (开头
+        if (/^\(/.test(str)) {
+            const startK = str.match(/^\(/)?.[0] as string;
+            opeStack.push(startK);
+            index ++;
+        } else if (/^\)/.test(str)) {
+            const ope = opeStack.pop();
+            numStack.push(ope);
+            // ()成对了，出栈
+            opeStack.pop();
+            index ++;
+        } else if (/^\d/.test(str)) {
+            const num = str.match(/^\d+/)?.[0] as string;
+            numStack.push(num);
+            index += num.length;
+        } else if (/^[\+\-\*\/]/.test(str)) {
+            const ope = str.match(/^[\+\-\*\/]/)?.[0] as string;
+            let lastOpe!: string;
+            if (!!opeStack.length) {
+                lastOpe = opeStack.peek() as string;
+            }
+            if (/^[\+\-\*\/]/.test(lastOpe) && !compareOpe(ope, lastOpe)) {
+                lastOpe = opeStack.pop() as string;
+                numStack.push(lastOpe);
+            }
+            opeStack.push(ope);
+            index += ope.length;
+        }
+        str = exp.substring(index);
+    }
+    while(!!opeStack.length) {
+        numStack.push(opeStack.pop());
+    }
+    const list = [];
+    while (!!numStack.length) {
+        list.push(numStack.pop());
+    }
+    return list.reverse().join(' ');
 }
