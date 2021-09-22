@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node-dev --respawn --transpileOnly src/index.ts",
     "lint": "tslint -p tsconfig.json -c tslint.json",
-    "test": "jest src/single-list"
+    "test": "jest src/tree/ArrBinaryTree"
   },
   "author": "theMxb",
   "license": "ISC",
